@@ -1,22 +1,37 @@
 let alumnos = [];
 let acumuladorNotas = 0;
 let promedio = 0;
-function enviarDatosAlumno() {
+
+function capturarEntrada() {
     event.preventDefault(); // Evitar el envío del formulario
 
-    // Obtener los valores del nombre y la nota
-    let nombre = document.getElementById("nombre").value;
-    let nota = parseInt(document.getElementById("nota").value);
+    for (let i = 0; i <= 2; i++) {
+    // Obtener el nombre del alumno utilizando prompt
+        let nombre = prompt("Ingrese el nombre del alumno");
+        // Obtener la nota del alumno utilizando prompt
+        let notaString = prompt("Ingrese la nota del alumno");
+        let nota = parseInt(notaString);
 
-    // Crear un objeto con los datos del alumno
-    let unAlumno = {
-        nombre: nombre,
-        nota: nota
-    };
+        // Validar la nota ingresada
+        if (isNaN(nota)) {
+            alert("La nota ingresada no es valida.");
+            return;
+        }
 
-    alumnos.push(unAlumno);
-    alert(`${nombre} fue agregado correctamente.`);
+        // Crear un objeto con los datos del alumno
+        let unAlumno = {
+            nombre: nombre,
+            nota: nota
+        };
+
+        alumnos.push(unAlumno);
+        alert(`${nombre} fue agregado correctamente.`);
+    }
+
+    console.log(alumnos);
+
 }
+
 
 
 function calcularPromedioCurso() {
